@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>saludo</title>
+    </head>
+    <body>
+        <h2></h2>
+        <form id="formulario">
+            <input id="texto" type="text" placeholder="agregar texto">
+            <button id="agregar">saludar</button>
+        </form>
+        <script>
+            const titu = document.querySelector("h2");
+            const texto = document.getElementById("texto");
+            const boto = document.getElementById("agregar");
+            const formu = document.getElementById("formulario");
+
+            formu.addEventListener("submit",(e) =>{
+                e.preventDefault();
+
+                titu.textContent = "hola " + texto.value;
+            })
+        </script>   
+    </body>
+</html>

@@ -1,0 +1,153 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dark{
+    background: #000;
+    color: #fff;
+}
+
+#to-do-list{
+    width: 100%;
+    height: 100vh;
+}
+
+#dividorList{
+    height: 82%;
+}
+
+#to-do-list h1{
+    text-align: center;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+#lista{
+    list-style: none;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lista li{
+    width: 800px;
+    min-height: 50px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 18px;
+    background: #fff;
+    margin:10px;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.dark #lista li{
+    background:#272727;
+    box-shadow: 0 0 20px rgba(40,20,141,0.3);
+}
+
+#dividorCampo{
+    width: 100%;
+    height: 18%;
+    background: #fff;
+    position: fixed;
+    display:flex;
+    bottom:0;
+    left:0;
+    padding: 0 30px;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.dark #dividorCampo{
+    background: #000;
+}
+
+#containerDeTareas ul{
+    list-style: none;
+}
+
+#formulario{
+    position:relative;
+    display: flex;
+    align-items: center;
+}
+
+#cuadroDeTexto{
+    width:550px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 10px 55px 10px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    outline:none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark #cuadroDeTexto{
+    background: #272727;
+    color:#fff
+}
+
+#agregar{
+    width: 40px;
+    font-size: 23px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    background: #27F5BB;
+    color:  #fff;
+    border-radius: 60%;
+    border:none;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#lunaCambio{
+    width: 52px;
+    height: 52px;
+    fill:#27F5BB;
+    justify-content: right;
+}
+
+/*aqui se pondran todo las class que se crean con javaScript*/
+
+/*esta es la caracteristicas de los parrafo completado y pendiente que se 
+caracteristica por su color*/
+
+/*aqui es donde se pone el texto del input*/
+span{
+    font-size: 0.9rem;
+}
+
+#lista li p{
+    color: #F7320C;
+    margin-bottom: 5px;
+}
+
+#lista li .listaCompletada{
+    color:#0CF737;
+    margin-bottom: 5px;
+}
+
+.containerDeBotones{
+    display: flex;
+    gap:4px;
+}
+
+.botonesDelContainer{
+    border: 1px solid transparent;
+    background: transparent;
+    display: flex;
+    margin-top: 5px;
+    cursor: pointer;
+}

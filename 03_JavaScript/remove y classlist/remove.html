@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>caja</title>
+    </head>
+    <body>
+        <form id="formulario">
+            <input id="nombre" type="text" placeholder="agregar un nombre">
+            <button id="agregar">agregar</button>
+        </form>
+        <script>
+            const form = document.getElementById("formulario");
+            const nom = document.getElementById("nombre");
+            form.addEventListener("submit", (e) =>{
+                e.preventDefault();
+                if(nom.value.trim() !== ""){
+                    const div = document.createElement("div");
+                    document.body.appendChild(div);
+                    const h2 = document.createElement("h2");
+                    h2.textContent = nom.value;
+                    div.appendChild(h2);
+                    const p = document.createElement("p");
+                    p.textContent = "piendiente";
+                    div.appendChild(p);
+                    const completar = document.createElement("button");
+                    const eliminar = document.createElement("button");
+                    completar.textContent = "completar";
+                    eliminar.textContent = "eliminar";
+                    div.appendChild(completar);
+                    div.appendChild(eliminar);
+                    nom.value = "";
+                    completar.addEventListener("click",() =>{
+                        if(p.textContent !== "completado" ){
+                            p.textContent = "completado"
+                        }else if(p.textContent === "completado"){
+                            p.textContent = "penndiente"
+                        }
+                    });
+                    eliminar.addEventListener("click",()=>{
+                        div.remove();
+                    });
+                }else{
+                    alert("no agregaste nada al campo de texto")
+                }
+            })
+        </script>
+    </body>
+</html>

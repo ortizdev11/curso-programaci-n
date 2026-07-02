@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>sumatorio</title>
+    </head>
+    <body>
+        <h2></h2>
+        <form id="formulario">
+            <input id="a" type="text" placeholder="agregar texto">
+            <input id="b" type="text" placeholder="agregar texto">
+            <button id="sumar">saludar</button>
+        </form>
+        <script>
+            const resul = document.querySelector("h2");
+            const form = document.getElementById("formulario");
+            const a = document.getElementById("a");
+            const b = document.getElementById("b");
+            
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const num1 = Number(a.value);
+                const num2 = Number(b.value)
+                resul.textContent = "resultado: " + (num1 + num2);
+            })
+        </script>   
+    </body>
+</html>

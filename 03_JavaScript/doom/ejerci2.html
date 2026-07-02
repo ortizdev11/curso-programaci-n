@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>muestra edad</title>
+    </head>
+    <body>
+        <h2></h2>
+        <h3></h3>
+        <form id="formulario">
+            <input id="nombre" type="text" placeholder="agregar nombre">
+            <input id="edad" type="text" placeholder="agregar edad">
+            <button id="enviador">enviar</button>
+        </form>
+        <script>
+            const bienveni = document.querySelector("h2");
+            const muestraedad = document.querySelector("h3");
+            const form = document.getElementById("formulario");
+            const  nombre = document.getElementById("nombre");
+            const edad = document.getElementById("edad");
+
+            form.addEventListener("submit", (e) =>{
+                e.preventDefault(),
+                bienveni.textContent ="Bienvenido " + nombre.value;
+                muestraedad.textContent ="tienes "+ edad.value + " años.";
+            })
+        </script>   
+    </body>
+</html>

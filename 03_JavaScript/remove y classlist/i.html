@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lista con Checkboxes</title>
+<style>
+  ul {
+    list-style: none; /* Quita viñetas */
+    padding: 0;
+  }
+  li {
+    margin: 5px 0;
+  }
+</style>
+</head>
+<body>
+
+<h3>Tareas</h3>
+<ul id="listaTareas">
+  <li>
+    <label>
+      <input type="checkbox" value="Comprar pan"> Comprar pan
+    </label>
+  </li>
+  <li>
+    <label>
+      <input type="checkbox" value="Llamar al médico"> Llamar al médico
+    </label>
+  </li>
+  <li>
+    <label>
+      <input type="checkbox" value="Estudiar JavaScript"> Estudiar JavaScript
+    </label>
+  </li>
+</ul>
+
+<script>
+  // Obtener todos los checkboxes dentro de la lista
+  const checkboxes = document.querySelectorAll('#listaTareas input[type="checkbox"]');
+
+  // Escuchar cambios en cada checkbox
+  checkboxes.forEach(chk => {
+    chk.addEventListener('change', function() {
+      if (this.checked) {
+        console.log(`✅ Marcado: ${this.value}`);
+      } else {
+        console.log(`❌ Desmarcado: ${this.value}`);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

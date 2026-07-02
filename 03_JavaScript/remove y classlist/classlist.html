@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            /*se crea el estilo de modo oscuros*/
+            .oscuro{
+                background: #000;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <!--se crea un boton para cambiar el modod del boton-->
+        <button id="modo">modo oscuro</button>
+        <script>
+            //se crea la variable para encontra el boton
+            const boton = document.getElementById("modo");
+            //se crea la funcion cuaando haga click
+            boton.addEventListener("click",()=>{
+                //se crea una condicion
+                if(boton.classList.contains("oscuro")){
+                    //si tiene la clase  oscuro que se la quite 
+                    boton.classList.toggle("oscuro");
+                    //y pona en el boton modo oscuro
+                    boton.textContent = "modo oscuro";
+                }else{
+                    //si no tiene la clase oscuro la ponga
+                    boton.classList.toggle("oscuro");
+                    //y pona en el boton modo claro
+                    boton.textContent = "modo claro";
+                }
+            })
+        </script>
+    </body>
+</html>

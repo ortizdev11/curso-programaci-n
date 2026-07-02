@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>creador p</title>
+    </head>
+    <body>
+            <button id="nuv">parrafo</button>
+        <script>
+            const nuv = document.getElementById("nuv");
+            let contador = 0;
+            nuv.addEventListener("click",() => {
+                contador ++;
+                const p= document.createElement("p");
+                p.textContent = "parrafo "+ contador;
+                document.body.appendChild(p)
+            })      
+        </script>   
+    </body>
+</html>   
