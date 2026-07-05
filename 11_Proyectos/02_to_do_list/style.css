@@ -1,3 +1,6 @@
+/*1.estructura general: 
+body, header, main*/
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -5,78 +8,72 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.dark{
-    background: #000;
-    color: #fff;
+/*aquí se modifica el encabezado de web header*/
+header{
+    height:8%;
+    display:flex;
+    padding: 8px;
 }
 
-#to-do-list{
-    width: 100%;
-    height: 100vh;
-}
-
-#dividorList{
-    height: 82%;
-}
-
-#to-do-list h1{
-    text-align: center;
-    padding: 10px;
-    transition: color 0.3s ease;
-}
-
-#lista{
-    list-style: none;
-    width: 100%;
-    min-height: 500px;
+#titulo{
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-#lista li{
-    width: 800px;
-    min-height: 50px;
-    height: auto;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 18px;
-    background: #fff;
-    margin:10px;
-    border-radius: 12px;
-    transition: background 0.3s ease;
+#titulo img{
+    width: 38px;
 }
 
-.dark #lista li{
-    background:#272727;
-    box-shadow: 0 0 20px rgba(40,20,141,0.3);
+/*aqui se modifica la caneca elimina todo*/
+#eliminartodo{
+    width: 38px;
+    margin-left: auto;
+    fill: #F7320C;
+    transform: translateY(0);
+    transition: transform .3s ease, width .3s ease ;
 }
+
+#eliminartodo:hover {
+    transform: translateY(-8px);
+    width: 42px;
+}
+
+/*aqui el ancho y lo que tenga que ver el main*/
+main{
+    height: 92%;
+}
+/*2.lista de tareas:
+#listado, li, span, p, botones*/
+#listado{
+    list-style: none;
+    height: 100%;
+    margin-bottom: 130px;
+    display: grid;
+    justify-content: center;
+}
+/*3.panel inferior:
+formulario, input, botón agregar, contador*/
 
 #dividorCampo{
-    width: 100%;
-    height: 18%;
-    background: #fff;
-    position: fixed;
-    display:flex;
-    bottom:0;
-    left:0;
-    padding: 0 30px;
-    justify-content: space-between;
+    display: flex;
     align-items: center;
-    transition: background 0.3s ease;
-}
-
-.dark #dividorCampo{
-    background: #000;
-}
-
-#containerDeTareas ul{
-    list-style: none;
+    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    padding: 15px 30px;
+    background: #fff;
 }
 
 #formulario{
-    position:relative;
+    margin: 0 auto;
+    position: relative;
     display: flex;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #cuadroDeTexto{
@@ -84,15 +81,11 @@
     height: 60px;
     border: 2px solid transparent;
     border-radius: 20px;
-    padding: 10px 55px 10px 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     outline:none;
+    background: linear-gradient(to right, #E7E7E7, #fff);
     transition: background 0.3s ease, color 0.3s ease;
-}
-
-.dark #cuadroDeTexto{
-    background: #272727;
-    color:#fff
+    padding:0 30px;
 }
 
 #agregar{
@@ -110,44 +103,188 @@
     align-items:center;
     cursor:pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background .3s ease-in-out, transform .2s ease;
 }
 
-#lunaCambio{
-    width: 52px;
-    height: 52px;
-    fill:#27F5BB;
-    justify-content: right;
+#agregar:hover{
+    background: #18C995;
+    transform:scale(1.08);
 }
 
-/*aqui se pondran todo las class que se crean con javaScript*/
+#containerDeTareas{
+    width:190px;
+}
 
-/*esta es la caracteristicas de los parrafo completado y pendiente que se 
-caracteristica por su color*/
+#containerDeTareas p{
+    color:#000;
+    transition: color .3s ease;
+}
+/*4.ventana de confirmacion
+.avisoEliminar, botones Sí y No*/
 
-/*aqui es donde se pone el texto del input*/
+/*se modifica el div*/
+.avisoEliminar{
+    position: fixed;
+    width: 350px;
+    top: 50%;
+    background: linear-gradient(to left, #fff, #E7E7E7);
+    left: 50%;
+    transform: translateY(-6px);
+    height: 160px;
+    color: #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 9px;
+    z-index: 1000;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity .4s ease, transform .4s ease;
+}
+
+.avisoEliminar.visible{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.avisoEliminar p{
+    font-size: 20px;
+    color: #000;
+    padding-top: 10px ;
+}
+
+.containerAviso{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 12px;
+}
+
+/*se modifica el boton no*/
+.botonNo{
+    width: 60px;
+    height: 32px;
+    background: linear-gradient(to right, #F7320C, #F58427);
+    color:#fff;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform:  translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.botonNo:hover{
+    transform: translateY(-8px);
+}
+
+/*se modifica el boton si*/
+.botonSi{
+    width:  60px;
+    height: 32px;
+    background: linear-gradient(to right, #27F557, #27F5C2);
+    color:#fff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transform:  translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.botonSi:hover{
+    transform: translateY(-8px);
+}
+
+/*6.clases creadas con js*/
+
+/*se modifica lo de lista*/
+.lista{
+    width: 800px;
+    min-height: 50px;
+    height: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 18px;
+    background: #fff;
+    margin:10px;
+    border-radius: 12px;
+    opacity: 0;
+    transform:  translateY(4px);
+    transition:  opacity .4s, transform .4s;
+}
+
+.lista.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*se crea  la class que dice si esta pendiente o completa*/
+p{
+    color:#F7320C;
+    transition: color .4s ease;
+}
+
+.listaCompletada{
+    color:#18C995;
+}
+
+/*se modifica el div de aviso de eliminar todo*/
+
+/*aqui se modifica el texto*/
 span{
     font-size: 0.9rem;
+    overflow-wrap: break-word;
 }
 
-#lista li p{
-    color: #F7320C;
-    margin-bottom: 5px;
-}
-
-#lista li .listaCompletada{
-    color:#0CF737;
-    margin-bottom: 5px;
-}
-
+/*aquí se modifica los botones de completar, editar, eliminar de li lista*/
 .containerDeBotones{
     display: flex;
     gap:4px;
 }
 
-.botonesDelContainer{
+.containerDeBotones button{
     border: 1px solid transparent;
     background: transparent;
     display: flex;
     margin-top: 5px;
     cursor: pointer;
+}
+
+/*5.modo oscuro:
+ todas las reglas .dark juntas */
+
+ /*aqui se modifica el icono que activa y desativa el modo*/
+ #lunaCambio{
+    width: 52px;
+    fill: #27F5BB;
+}
+
+.dark{
+    background: #000;
+    color: #fff;
+}
+
+.dark #listado li{
+    background:#272727;
+    box-shadow: 0 0 20px rgba(40,20,141,0.3);
+}
+
+.dark #dividorCampo{
+    background: #000;
+}
+
+.dark #cuadroDeTexto{
+    background: linear-gradient(to right, #252525 ,#272727);
+    color:#fff
+}
+
+.dark .avisoEliminar{
+    background: linear-gradient(to right, #272727, #000);
+    color: #fff;
+}
+
+.dark .avisoEliminar p{
+    color: #fff;
+}
+
+.dark #containerDeTareas p {
+    color: #fff;
 }
