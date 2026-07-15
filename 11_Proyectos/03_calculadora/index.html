@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>calculadora</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <div id="containerCal">
+                <div id="containerInput">
+                    <h1>Calculadora</h1>
+                    <div id="anterior"></div>
+                    <input type="text" id="inputText" readonly>
+                </div>
+                <div id="containerTeclado">
+                    <section class="filas">
+                        <button class="botonesOpera" id="**">^</button> 
+                        <button id="eliminarTodo">C</button>
+                        <button id="eliminarUno"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75 14.25 12m0 0 2.25 2.25M14.25 12l2.25-2.25M14.25 12 12 14.25m-2.58 4.92-6.374-6.375a1.125 1.125 0 0 1 0-1.59L9.42 4.83c.21-.211.497-.33.795-.33H19.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25h-9.284c-.298 0-.585-.119-.795-.33Z" />
+                        </svg></button>
+                    </section>
+                    <section class="filas">
+                        <button class="botonNume"><p>7</p></button>
+                        <button class="botonNume"><p>8</p></button>
+                        <button class="botonNume"><p>9</p></button>
+                        <button class="botonesOpera" id="/"><p>÷</p></button>
+                    </section>
+                    <section class="filas">
+                        <button class="botonNume">4</button>
+                        <button class="botonNume">5</button>
+                        <button class="botonNume">6</button>
+                        <button class="botonesOpera" id="*">x</button>
+                    </section>
+                    <section class="filas">
+                        <button class="botonNume">1</button>
+                        <button class="botonNume">2</button>
+                        <button class="botonNume">3</button>
+                        <button class="botonesOpera" id="-">-</button>
+                    </section>
+                    <section class="filas">
+                        <button class="botonNume">0</button>
+                        <button class="botonNume">.</button>
+                        <button id="operaciones">=</button>
+                        <button class="botonesOpera" id="+">+</button>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -10,9 +10,10 @@ body, header, main*/
 
 /*aquí se modifica el encabezado de web header*/
 header{
-    height:8%;
+    height:10%;
     display:flex;
     padding: 8px;
+    position: relative;
 }
 
 #titulo{
@@ -23,6 +24,47 @@ header{
 
 #titulo img{
     width: 38px;
+}
+
+#buscadorDeLis{
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:  opacity .4s, visibility .4s;
+}
+
+#buscadorDeLis.visible{
+    opacity: 1;
+    visibility: visible;
+    pointer-events:auto ;
+}
+
+#textBuscador{
+    height: 45px;
+    width: 550px;
+    padding: 0 30px;
+    outline:none;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    box-shadow:0 5px 15px rgba(0, 0, 0, 0.2) ;
+}
+
+#lupaBuscador{
+    background: transparent;
+    border: none;
+    position: absolute;
+    width: 20px;
+    top: 10px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    right: 10px;
 }
 
 /*aqui se modifica la caneca elimina todo*/
@@ -39,9 +81,68 @@ header{
     width: 42px;
 }
 
+#botonMenu{
+    background: transparent;
+    border:none;
+    transition: background .4s, border .3s, border-radius .4s;
+}
+
+#botonMenu:hover {
+    background: #E7E7E7;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+#menuDesplegables{
+    width: 38px;
+    fill: #000;
+    transition:  fill .4s ease;
+}
+#cajaMeni{
+    right: 10px;
+    top: 50px;
+    width: 220px;
+    height: 190px;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .4s;
+}
+
+#cajaMeni.visible{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+#cajaMeni ul li svg{
+    width: 20px;
+}
+
+#cajaMeni ul li{
+    display: flex;
+    padding: 6px;
+    background: #fff;
+    margin:3px;
+    transform:  translateX(0);
+    transition: background .3s ease, transfotm .4s ease;
+}
+
+#cajaMeni ul li:hover {
+    background: #E7E7E7;
+    transform: translatex(6px);
+    border-radius: 8px;
+    box-shadow:0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
 /*aqui el ancho y lo que tenga que ver el main*/
 main{
-    height: 92%;
+    height: 90%;
 }
 /*2.lista de tareas:
 #listado, li, span, p, botones*/
@@ -163,6 +264,7 @@ formulario, input, botón agregar, contador*/
 /*se modifica el boton no*/
 .botonNo{
     width: 60px;
+    cursor: pointer;
     height: 32px;
     background: linear-gradient(to right, #F7320C, #F58427);
     color:#fff;
@@ -180,6 +282,7 @@ formulario, input, botón agregar, contador*/
 /*se modifica el boton si*/
 .botonSi{
     width:  60px;
+    cursor: pointer;
     height: 32px;
     background: linear-gradient(to right, #27F557, #27F5C2);
     color:#fff;
@@ -214,6 +317,32 @@ formulario, input, botón agregar, contador*/
 .lista.visible{
     opacity: 1;
     transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+}
+
+/*aqui se modifica la estrella*/
+.fa-star{
+    cursor:pointer;
+    transition: transform .2s ease;
+}
+
+.fa-star:hover{
+    transform:scale(1.2);
+}
+
+/*aqui se modifica la estrella de completa*/
+.fa-regular{
+    color: #FFD700;
+    padding-bottom: 3px;
+    margin-left: auto ;
+}
+
+/*aqui pone la estrella que representa lista favorita*/
+.fa-solid{
+    color:#FFD700;
+    padding-bottom: 3px;
+    margin-left: auto ;
 }
 
 /*se crea  la class que dice si esta pendiente o completa*/
@@ -254,6 +383,7 @@ span{
  /*aqui se modifica el icono que activa y desativa el modo*/
  #lunaCambio{
     width: 52px;
+    cursor: pointer;
     fill: #27F5BB;
 }
 
@@ -287,4 +417,34 @@ span{
 
 .dark #containerDeTareas p {
     color: #fff;
+}
+
+.dark #menuDesplegables{
+    fill: #fff
+}
+
+.dark #botonMenu:hover{
+    background: #272727;
+}
+
+.dark #cajaMeni{
+    background: #272727;
+    color: #fff;
+}
+
+.dark #cajaMeni ul li{
+    background: #272727;
+}
+
+.dark #cajaMeni ul li:hover{
+    background: #333333;
+}
+
+.dark #textBuscador{
+    background: #272727;
+    color: #fff;   
+}
+
+.dark #lupabuscador{
+    stroke: #fff;
 }

@@ -10,7 +10,18 @@ const formulario = document.getElementById("formulario");
 const eliminarTodo = document.getElementById("eliminartodo");
 const luna = document.getElementById("lunaCambio");//aqui se busca el id para si tocar el logo se activa el modo oscuro y si vulve a tocar se desactiva.
 const cuadroTexto = document.getElementById("dividorCampo");
+const menuDesplegable = document.getElementById("menuDesplegables");
 
+//--------------------variable de una caja menu-----------------
+
+const buscador = document.getElementById("buscador");
+const campoBuscador = document.getElementById("buscadorDeLis");
+const tareaCompletasMos = document.getElementById("tareaCom");
+const tareasMostrar = document.getElementById("tareas");
+const tareasPendient = document.getElementById("tareaPendie");
+const menuFavo = document.getElementById("menufavorito");
+
+ 
 //------------------Variables boleanas--------------------------
 
 let modoOscuro = false;
@@ -53,7 +64,8 @@ function recargarModoOscuro(){
 function guardarLista(){
     tareas.push({
         titulo: texto.value,
-        completada : false
+        completada : false,
+        favorito: false
     });
     
     guardarLocalStorage();
@@ -61,15 +73,20 @@ function guardarLista(){
 
 function actualizadorDeContadores(){
     const tarea = document.getElementById("tareaCantidad");
+    const tareaFav = document.getElementById("tareaFavo");
     const pendiente = document.getElementById("pendiente");
     const completa = document.getElementById("completa");
     const porcentaje = document.getElementById("porcentaje");
     let totalCompleta = 0;
+    let totalFavo = 0;
     let porcentajeCompleta = 0;
 
     tareas.forEach(function(tarea){
         if(tarea.completada){
             totalCompleta ++;
+        };
+        if(tarea.favorito){
+            totalFavo ++;
         }
     });
 
@@ -77,7 +94,8 @@ function actualizadorDeContadores(){
     if(tareas.length !== 0){
         porcentajeCompleta = (totalCompleta / tareas.length)* 100;
     }
-
+    
+    tareaFav.textContent = "Favoritas: " + totalFavo;
     tarea.textContent = "Tareas:  " + tareas.length;
     completa.textContent = "Completadas:  "+ totalCompleta;
     pendiente.textContent = "Pendientes:  "+ totalPendiente;
@@ -129,6 +147,20 @@ function editador( indice){
     }
 };
 
+function listaFavorito(indice, estrella){
+    if(!tareas[indice].favorito){
+        tareas[indice].favorito = true;
+        estrella.classList.remove("fa-regular");
+        estrella.classList.add("fa-solid");
+    }else{
+        tareas[indice].favorito = false;
+        estrella.classList.remove("fa-solid");
+        estrella.classList.add("fa-regular");
+    };
+    guardarLocalStorage();
+    actualizadorDeContadores();
+};
+
 //esta es la que crea el li 
 function creaUnaLista(tarea, indice){
     const textPendiente = document.createElement("p");//aqui se crea un parrafo para creadorDeLista
@@ -138,6 +170,7 @@ function creaUnaLista(tarea, indice){
     const li = document.createElement("li");
     const spanTexto = document.createElement("span");
     const containerDeBotones = document.createElement("div");
+    const estrella = document.createElement("i");
         
 
     spanTexto.textContent = tarea.titulo;
@@ -145,13 +178,19 @@ function creaUnaLista(tarea, indice){
     botonCompletada.textContent ="✅";
     botonEditar.textContent = "✏️";
     botonEliminar.textContent = "❌";
-
+    
+    if(tarea.favorito){
+        estrella.classList.add("fa-solid", "fa-star"); //fa-solid es estrella favorita(true)
+    }else{
+        estrella.classList.add("fa-regular", "fa-star"); //fa-regular es estrella vacia(false)
+    }
     li.classList.add("lista");
 
     setTimeout(() =>{
         li.classList.add("visible");
     }, 20);//esto le va el poner de que ponerle otra class pues 20s y se anima la li al crear
-
+    
+    li.appendChild(estrella);
     li.appendChild(spanTexto);
     li.appendChild(textPendiente);
     li.appendChild(containerDeBotones);
@@ -161,7 +200,11 @@ function creaUnaLista(tarea, indice){
     listados.appendChild(li);
 
     containerDeBotones.classList.add("containerDeBotones");
-        
+    
+    estrella.addEventListener("click", () =>{
+        listaFavorito(indice, estrella);
+    })
+    
     botonCompletada.addEventListener("click",() =>{
         completarTareas(tarea,textPendiente);
     });
@@ -278,6 +321,44 @@ formulario.addEventListener("submit", (e) =>{
     texto.value = "";
 });
 
+function mostrarTareasFavoritos(){
+    listados.textContent = "";
+    tareas.forEach(function(tarea, indice){
+        if(tarea.favorito){
+            creaUnaLista(tarea, indice);
+        };
+    });
+};
+
+function mostrarTareasCompletas(){
+    listados.textContent = "";
+    tareas.forEach(function(tarea, indice){
+        if(tarea.completada){
+            creaUnaLista(tarea, indice);
+        };
+    });
+};
+
+function mostarTareasPendiente(){
+    listados.textContent = "";
+    tareas.forEach(function(tarea, indice){
+        if(!tarea.completada){
+            creaUnaLista(tarea, indice);
+        };
+    });
+};
+
+function buscadordelista(){
+    listados.textContent = "";
+    const campoTextoBus = document.getElementById("textBuscador");
+    const camposBuscador = campoTextoBus.value;
+    tareas.forEach(function(tarea, indice){
+        if(tarea.titulo.includes(camposBuscador.trim().toLowerCase())){
+            creaUnaLista(tarea, indice)
+        }
+    });
+};
+
 //aqui se detecta cuando toca el boton elimine todo los li si hay
 eliminarTodo.addEventListener("click", () =>{
     if (!ventanaAdvertencia){
@@ -290,4 +371,34 @@ eliminarTodo.addEventListener("click", () =>{
 luna.addEventListener("click", () =>{
     //IMPORTANTE:!aqui ni se necesita el e.preventDefault(), porque esto no actualiza la web sino agrega un class que modifica los colores¡
     cambiarModoDePantalla();
+});
+
+menuDesplegable.addEventListener("click",()=>{
+    const cajaMeni = document.getElementById("cajaMeni");
+
+    cajaMeni.classList.toggle("visible");
+});
+
+buscador.addEventListener("click",()=>{
+    campoBuscador.classList.toggle("visible");
+});
+
+campoBuscador.addEventListener("input",()=>{
+    buscadordelista();
+});
+
+tareaCompletasMos.addEventListener("click", ()=>{
+    mostrarTareasCompletas(); 
+});
+
+tareasMostrar.addEventListener("click", ()=>{
+    recargarListado();
+});
+
+tareasPendient.addEventListener("click",() =>{
+    mostarTareasPendiente(); 
+});
+
+menuFavo.addEventListener("click",()=>{
+    mostrarTareasFavoritos();
 });
