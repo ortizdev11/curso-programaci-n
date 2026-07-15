@@ -1,7 +1,21 @@
-#CALCULADORA SIMPLE
-esto es web es una calculadora solo para computador, unos de mis primeros proyectos.
+# Calculadora
 
-##lenguajes:
--css
--TypeScript o más conocido como JavaScript
--html
+Proyecto realizado con HTML, CSS y JavaScript.
+
+Permite realizar operaciones básicas desde una interfaz sencilla.
+
+## Tecnologías
+
+- HTML
+- CSS
+- JavaScript
+
+## Características
+
+- Suma
+- Resta
+- Multiplicación
+- División
+- Potencias
+- Borrar un número
+- Reiniciar operación
