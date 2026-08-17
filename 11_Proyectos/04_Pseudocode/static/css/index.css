@@ -1,0 +1,85 @@
+*{
+    margin:0;
+    padding: 0;;
+    box-sizing:border-box;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+html, body{
+    margin:0;
+    overflow: hidden;
+}
+
+body{
+    background:#000 !important;
+}
+
+#ajustadordeNotificacion{
+    display:block;
+}
+
+
+#ajustadordeNotificacion{
+    position:fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+}
+
+#NotifiDeBienvenido{
+    opacity:42%;
+    width:90%;
+    max-width:390px;
+    padding:22px;
+    background-color:#181818;
+    border-radius:30px;
+    box-shadow: 0px 2px 10px 1px rgba(225, 225, 225, 0.5);
+    transform:translateY(0);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+#NotifiDeBienvenido h1{
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    text-align:center;
+    margin-bottom:10px;
+}
+
+#NotifiDeBienvenido p{
+    margin:12px 0;
+    font-size: 1rem;  
+    text-align: justify;
+    line-height: 1.5;
+}
+
+
+a{
+    text-decoration: none;
+    background-color:#262626;
+    padding: 10px 10px;
+    max-width:100px;
+    text-align: center;
+    margin:0 auto;
+    display:block;
+    border-radius:10px;
+    transform:translateY(0);
+    transition: transform 0.9s ease ;
+}
+
+a:hover{
+    transform:translateY(-9px);
+    transform:scale(1.1);
+}
+
+#NotifiDeBienvenido:hover{
+    opacity:70%;
+    transform:translateY(-8px)
+}
+
+#animacionEstrellas{
+    display: block;
+}

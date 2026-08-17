@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pseudocode Cort</title>
+        <link rel="icon" href="{{ url_for('static', filename='img/logodepse.png') }}" type="image/png">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/monitor.css') }}">
+    </head>
+    <body>
+        <header>
+            <img id="logodeapp" src="{{ url_for('static', filename='img/logpiso.png') }}" alt=" logo de la app">
+            <h1>Pseudocode Cort</h1>
+            <p class="Textguardar">No guardado</p>
+        </header>
+        <main>
+            <form id="formulario">
+                <textarea id="Pseudocode" placeholder="
+                INICIO
+                    LEER número1
+                    LEER número2
+                    SI número1 > número2 ENTONCES
+                        IMPRIMIR 'El número mayor es número1'
+                    SINO
+                        IMPRIMIR 'El número mayor es número2'
+                    FIN_SI
+                FIN
+                "></textarea>
+            </form>
+        </main>
+        <script type="module" src="{{ url_for('static', filename='js/monitor.js') }}"></script>
+    </body>
+</html>
